@@ -1,0 +1,537 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Java多线程：同步和锁 | 磕了药的手风琴</title>
+  <meta name="author" content="coderxiao">
+  
+  <meta name="description" content="xiaojian">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Java多线程：同步和锁"/>
+  <meta property="og:site_name" content="磕了药的手风琴"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="磕了药的手风琴" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+  
+
+
+  
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c76af951f22ae474d54aa5de7f5928cd";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+  <meta name="baidu-site-verification" content="T5wrOARbB1" />
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">磕了药的手风琴</a></h1>
+  <h2><a href="/">有优秀的人在，在哪里都能取得进步</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-03-10T13:26:56.000Z"><a href="/2015/03/10/Thread-synchronize-lock/">3月 10 2015</a></time>
+      
+      
+  
+    <h1 class="title">Java多线程：同步和锁</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2>为何需要同步和锁</h2>
+
+<hr>
+<p>看下面一段代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UnsafeSequence</span></span>{</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> value;</div><div class="line">	</div><div class="line">	<span class="javadoc">/**</span></div><div class="line">	 * 返回一个唯一的数值</div><div class="line">	 */</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getNext</span>(){</div><div class="line">		<span class="keyword">return</span> value++;</div><div class="line">	}</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>这个类存在的问题是如果执行时机不对，那么两个线程在调用getNext方法时候会得到相同的值。具体过程如下：</p>
+<p><img src="http://7tsz8h.com1.z0.glb.clouddn.com/unsafeThread.png" alt=""></p>
+<a id="more"></a>
+
+
+<p>当执行某个方法的正确性取决于多个线程的交替执行时序时候，那么就会发生<code>竞态条件</code>。</p>
+<p>而线程的同步和锁就是为了解决竞态条件而出现的，它可以防止多个线程访问同一个数据对象时候对数据造成的破坏。</p>
+<h2>要点</h2>
+
+<hr>
+<p>每一个Java对象都有一个可重入的内置锁，这里的可重入不是Linux里面的函数重入，而是以线程为粒度，线程自身重入。</p>
+<p>当程序运行到非静态的synchronized同步方法上时，自动获得与正在执行代码类的当前实例（this实例）有关的锁。获得一个对象的锁也称为获取锁、锁定对象、在对象上锁定或在对象上同步。</p>
+<p>当程序运行到synchronized同步方法或代码块时才该对象锁才起作用。</p>
+<p>一个对象只有一个锁。所以，如果一个线程获得该锁，就没有其他线程可以获得锁，直到第一个线程释放（或返回）锁。这也意味着任何其他线程都不能进入该对象上的synchronized方法或代码块，直到该锁被释放。</p>
+<p>释放锁是指持锁线程退出了synchronized同步方法或代码块。</p>
+<p>关于锁和同步，有一下几个要点：</p>
+<ol>
+<li>只能同步方法，而不能同步变量和类；</li>
+<li>每个对象只有一个锁；当提到同步时，应该清楚在什么上同步？也就是说，在哪个对象上同步？</li>
+<li>不必同步类中所有的方法，类可以同时拥有同步和非同步方法。</li>
+<li>如果两个线程要执行一个类中的synchronized方法，并且两个线程使用相同的实例来调用方法，那么一次只能有一个线程能够执行方法，另一个需要等待，直到锁被释放。也就是说：如果一个线程在对象上获得一个锁，就没有任何其他线程可以进入（该对象的）类中的任何一个同步方法。</li>
+<li>如果线程拥有同步和非同步方法，则非同步方法可以被多个线程自由访问而不受锁的限制。</li>
+<li>线程睡眠时，它所持的任何锁都不会释放。</li>
+<li>线程可以获得多个锁。比如，在一个对象的同步方法里面调用另外一个对象的同步方法，则获取了两个对象的同步锁。</li>
+<li>同步损害并发性，应该尽可能缩小同步范围。同步不但可以同步整个方法，还可以同步方法中一部分代码块。</li>
+<li>在使用同步代码块时候，应该指定在哪个对象上同步，也就是说要获取哪个对象的锁。</li>
+</ol>
+<h2>同步方法和同步块</h2>
+
+<hr>
+<p><code>同步方法</code>如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">int</span> <span class="title">getX</span>() {</div><div class="line">    <span class="keyword">return</span> x++;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>Java提供了粒度更加细的<code>同步块</code>，可以实现和同步方法一样的效果，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getX</span>() {</div><div class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) {</div><div class="line">        <span class="keyword">return</span> x++;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>要<code>同步静态方法</code>，需要一个用于整个类对象的锁，这个对象是就是这个类（XXX.class)。<br>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">int</span> <span class="title">setName</span>(String name){</div><div class="line">      Xxx.name = name;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>等价于</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">setName</span>(String name){</div><div class="line">      <span class="keyword">synchronized</span>(Xxx.class){</div><div class="line">            Xxx.name = name;</div><div class="line">      }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>当考虑阻塞时，一定要注意哪个对象正被用于锁定：</p>
+<ol>
+<li><p>调用同一个对象中非静态同步方法的线程将彼此阻塞。如果是不同对象，则每个线程有自己的对象的锁，线程间彼此互不干预。</p>
+</li>
+<li><p>调用同一个类中的静态同步方法的线程将彼此阻塞，它们都是锁定在相同的Class对象上。</p>
+</li>
+<li><p>静态同步方法和非静态同步方法将永远不会彼此阻塞，因为静态方法锁定在Class对象上，非静态方法锁定在该类的对象上。</p>
+</li>
+<li><p>对于同步代码块，要看清楚什么对象已经用于锁定（synchronized后面括号的内容）。在同一个对象上进行同步的线程将彼此阻塞，在不同对象上锁定的线程将永远不会彼此阻塞。</p>
+</li>
+</ol>
+<p>无论何时都要记住<strong>synchronized锁住的总是对象而不是代码</strong>，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">class Sync {  </div><div class="line">  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">test</span>() {  </div><div class="line">        System.out.println(<span class="string">"test开始.."</span>);  </div><div class="line">        <span class="keyword">try</span> {  </div><div class="line">            Thread.sleep(<span class="number">1000</span>);  </div><div class="line">        } <span class="keyword">catch</span> (InterruptedException e) {  </div><div class="line">            e.printStackTrace();  </div><div class="line">        }  </div><div class="line">        System.out.println(<span class="string">"test结束.."</span>);  </div><div class="line">    }  </div><div class="line">}  </div><div class="line">  </div><div class="line">class MyThread extends Thread {  </div><div class="line">  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {  </div><div class="line">        Sync sync = <span class="keyword">new</span> Sync();  </div><div class="line">        sync.test();  </div><div class="line">    }  </div><div class="line">}  </div><div class="line">  </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>{  </div><div class="line">  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) {  </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) {  </div><div class="line">            Thread thread = <span class="keyword">new</span> MyThread();  </div><div class="line">            thread.start();  </div><div class="line">        }  </div><div class="line">    }  </div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">test开始..</div><div class="line">test开始..</div><div class="line">test开始..</div><div class="line">test结束..</div><div class="line">test结束..</div><div class="line">test结束..</div></pre></td></tr></table></figure>
+
+<p>明显结果不是想要的，那么应该改成：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">class Sync {  </div><div class="line">  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span>() {  </div><div class="line">        <span class="keyword">synchronized</span> (Sync.class) {  </div><div class="line">            System.out.println(<span class="string">"test开始.."</span>);  </div><div class="line">            <span class="keyword">try</span> {  </div><div class="line">                Thread.sleep(<span class="number">1000</span>);  </div><div class="line">            } <span class="keyword">catch</span> (InterruptedException e) {  </div><div class="line">                e.printStackTrace();  </div><div class="line">            }  </div><div class="line">            System.out.println(<span class="string">"test结束.."</span>);  </div><div class="line">        }  </div><div class="line">    }  </div><div class="line">}  </div><div class="line">  </div><div class="line">class MyThread extends Thread {  </div><div class="line">  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {  </div><div class="line">        Sync sync = <span class="keyword">new</span> Sync();  </div><div class="line">        sync.test();  </div><div class="line">    }  </div><div class="line">}  </div><div class="line">  </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>{  </div><div class="line">  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) {  </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) {  </div><div class="line">            Thread thread = <span class="keyword">new</span> MyThread();  </div><div class="line">            thread.start();  </div><div class="line">        }  </div><div class="line">    }  </div><div class="line">}  </div><div class="line"></div><div class="line"><span class="javadoc">/***</span></div><div class="line"> * </div><div class="line">或者改为让三个线程使用同一个Sync的对象</div><div class="line">class MyThread extends Thread {  </div><div class="line">  </div><div class="line">    private Sync sync;  </div><div class="line">  </div><div class="line">    public MyThread(Sync sync) {  </div><div class="line">        this.sync = sync;  </div><div class="line">    }  </div><div class="line">  </div><div class="line">    public void run() {  </div><div class="line">        sync.test();  </div><div class="line">    }  </div><div class="line">}  </div><div class="line">  </div><div class="line">public class Main {  </div><div class="line">  </div><div class="line">    public static void main(String[] args) {  </div><div class="line">        Sync sync = new Sync();  </div><div class="line">        for (int i = 0; i &lt; 3; i++) {  </div><div class="line">            Thread thread = new MyThread(sync);  </div><div class="line">            thread.start();  </div><div class="line">        }  </div><div class="line">    }  </div><div class="line">}  </div><div class="line"> *</div><div class="line"> */</div></pre></td></tr></table></figure>
+
+<p>这里使用<strong>synchronized(Sync.class)实现了全局锁对象的效果</strong></p>
+<p>运行结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">test开始..</div><div class="line">test结束..</div><div class="line">test开始..</div><div class="line">test结束..</div><div class="line">test开始..</div><div class="line">test结束..</div></pre></td></tr></table></figure>
+
+<h2>同步机制</h2>
+
+<hr>
+<p>Java最初提供了<code>wait()</code>、<code>notify()</code>、<code>notifyAll()</code>方法来进行同步机制。线程不能调用对象上等待或通知的方法，除非它拥有那个对象的锁。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> notify()    </div><div class="line">                    唤醒在此对象监视器上等待的单个线程。    </div><div class="line"><span class="keyword">void</span> notifyAll()    </div><div class="line">                    唤醒在此对象监视器上等待的所有线程。    </div><div class="line"><span class="keyword">void</span> wait()    </div><div class="line">                    导致当前的线程等待，直到其他线程调用此对象的 notify() 方法或 notifyAll() 方法。    </div><div class="line"><span class="keyword">void</span> wait(<span class="keyword">long</span> timeout)    </div><div class="line">                    导致当前的线程等待，直到其他线程调用此对象的 notify() 方法或 notifyAll() 方法，或者超过指定的时间量。    </div><div class="line"><span class="keyword">void</span> wait(<span class="keyword">long</span> timeout, <span class="keyword">int</span> nanos)    </div><div class="line">                    导致当前的线程等待，直到其他线程调用此对象的 notify() 方法或 notifyAll() 方法，或者其他某个线程中断当前线程，或者已超过某个实际时间量。</div></pre></td></tr></table></figure>
+
+<p><code>wait()</code>、<code>notify()</code>、<code>notifyAll()</code>都是Object的实例方法。</p>
+<p>Obj.wait()，与Obj.notify()必须要与synchronized(Obj)一起使用，也就是wait与notify是针对已经获取了Obj锁进行操作，从语法角度来说就是Obj.wait(),Obj.notify必须在synchronized(Obj){…}语句块内。</p>
+<p>从功能上来说<strong>wait就是说线程在获取对象锁后，主动释放对象锁，同时本线程休眠。直到有其它线程调用对象的notify()唤醒该线程，才能继续获取对象锁，并继续执行</strong>。</p>
+<p>相应的n<strong>otify()就是对对象锁的唤醒操作</strong>。</p>
+<p>但有一点需要注意的是notify()调用后，并不是马上就释放对象锁的，而是在相应的synchronized(){}语句块执行结束，自动释放锁后，<strong>JVM会在wait()对象锁的线程中随机选取一线程，赋予其对象锁，唤醒线程</strong>，继续执行。</p>
+<p>这样就提供了在线程间同步、唤醒的操作。</p>
+<p>Thread.sleep()与Object.wait()二者都可以暂停当前线程，释放CPU控制权，主要的区别在于<strong>Object.wait()在释放CPU同时，释放了对象锁的控制</strong>。</p>
+<p>另外需要注意的是直接在线程中调用wait(),notify()方法，那么这个对象就是当前的线程，因此在一个线程中不能自己wait()和notify()。</p>
+<h3>例子</h3>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="javadoc">/***</span></div><div class="line"> * 同步机制：wait和notify</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Wait</span> </span>{</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) {</div><div class="line">		Object a = <span class="keyword">new</span> Object();</div><div class="line">		ThreadB b = <span class="keyword">new</span> ThreadB(a);</div><div class="line">		<span class="comment">// 启动计算线程</span></div><div class="line">		b.start();</div><div class="line">		<span class="comment">//线程A拥有b对象上的锁。</span></div><div class="line">		<span class="comment">//线程为了调用wait()或notify()方法，该线程必须是那个对象锁的拥有者</span></div><div class="line"></div><div class="line">		<span class="keyword">synchronized</span> (a) { <span class="comment">// 这里也可以是b，然后ThreadB里面直接notify即可</span></div><div class="line">			<span class="keyword">try</span> {</div><div class="line">				System.out.println(<span class="string">"等待对象b完成计算。。。"</span>);</div><div class="line">				<span class="comment">// 当前线程A等待</span></div><div class="line">				a.wait();</div><div class="line">			} <span class="keyword">catch</span> (InterruptedException e) {</div><div class="line">				e.printStackTrace();</div><div class="line">			}</div><div class="line">			System.out.println(<span class="string">"b对象计算的总和是："</span> + b.total);</div><div class="line">		}</div><div class="line">	}</div><div class="line">}</div><div class="line"></div><div class="line"><span class="javadoc">/**</span></div><div class="line"> * 计算1+2+3 ... +100的和</div><div class="line"> * </div><div class="line"> */</div><div class="line">class ThreadB extends Thread {</div><div class="line"></div><div class="line">	<span class="keyword">int</span> total;</div><div class="line">	<span class="keyword">private</span> Object a;</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="title">ThreadB</span>(Object a) {</div><div class="line">		<span class="keyword">this</span>.a = a;</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">		<span class="keyword">synchronized</span> (a) {</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">101</span>; i++) {</div><div class="line">				total += i;</div><div class="line">			}</div><div class="line">			<span class="comment">// （完成计算了）唤醒在此对象监视器上等待的单个线程，在本例中线程A被唤醒</span></div><div class="line">			<span class="comment">// 注意，这里一定是a，除非锁的是 ThreadB b ，此时可以是notify()</span></div><div class="line">			a.notify(); </div><div class="line">		}</div><div class="line">	}</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">等待对象b完成计算。。。</div><div class="line">b对象计算的总和是：<span class="number">5050</span></div></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Java/">Java</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Java/">Java</a>, <a href="/tags/Thread/">Thread</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+<nav id="pagination" >
+    
+    <a href="/2015/03/13/Thread-daemon/" class="alignleft prev" title="Java多线程：用户进程和守护进程">上一篇：Java多线程：用户进程和守护进程</a>
+ 	
+ 	
+    <a href="/2015/03/04/Thread-join/" class="alignright next" title="Java多线程：抢占">下一篇：Java多线程：抢占</a>
+ 	
+    <div class="clearfix"></div>
+
+</nav>
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread" data-thread-key="/2015/03/10/Thread-synchronize-lock/" data-title="Java多线程：同步和锁" data-url="http://coderxiao.com/2015/03/10/Thread-synchronize-lock/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"xiaoxiaojiok"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//baidu.com/baidu" method="get" accept-charset="utf-8">
+    <input type="search" name="word" results="0" placeholder="搜索">
+    <input type="hidden" name="si" value="coderxiao.com">
+    <input name=tn type=hidden value="bds">
+	<input name=cl type=hidden value="3">
+	<input name=ct type=hidden value="2097152">
+	<input name=s type=hidden value="on">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Algorithm/">Algorithm</a><small>1</small></li>
+  
+    <li><a href="/categories/C/">C++</a><small>1</small></li>
+  
+    <li><a href="/categories/Dubbo/">Dubbo</a><small>1</small></li>
+  
+    <li><a href="/categories/Hexo/">Hexo</a><small>1</small></li>
+  
+    <li><a href="/categories/Java/">Java</a><small>19</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>磕了药的手风琴</li>
+<li><a href="http://www.scut.edu.cn">SCUT</a>在读研究生</li>
+<li>Theme: <a href="https://github.com/xiaoxiaojiok/light">Light</a></li>
+<li>想要交友的朋友请<a href="http://coderxiao.com/about">联系我</a>！</li>
+</ul>
+</div>
+
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Algorithm/" style="font-size: 10.00px;">Algorithm</a><a href="/tags/C/" style="font-size: 10.00px;">C++</a><a href="/tags/CGI/" style="font-size: 10.00px;">CGI</a><a href="/tags/Design-Pattern/" style="font-size: 12.50px;">Design Pattern</a><a href="/tags/Dubbo/" style="font-size: 10.00px;">Dubbo</a><a href="/tags/Git/" style="font-size: 10.00px;">Git</a><a href="/tags/Hexo/" style="font-size: 10.00px;">Hexo</a><a href="/tags/Java/" style="font-size: 20.00px;">Java</a><a href="/tags/Linux/" style="font-size: 15.00px;">Linux</a><a href="/tags/Thread/" style="font-size: 17.50px;">Thread</a><a href="/tags/shell/" style="font-size: 10.00px;">shell</a>
+  </div>
+</div>
+
+
+  <iframe width="100%" height="137" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=137&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2552916352&verifier=fbb51242&dpc=1"></iframe>
+
+  <div class="widget tag">
+<h3 class="title">亲，记得运动</h3>
+<ul class="entry">
+<object type="application/x-shockwave-flash" style="outline:none;" 
+data="http://cdn-blog.mimvp.com/wp-content/themes/officefolders/images/mouse.swf" 
+width="230" height="160" alt="显示小白鼠，请安装flash" title="小白鼠一枚，来领走我">
+            <param name="movie" value="http://cdn-blog.mimvp.com/wp-content/themes/officefolders/images/mouse.swf" />
+            <param name="bgcolor" value="#ffffff" />
+                <param name="color" value="#F5F5F5" />
+            <param name="AllowScriptAccess" value="always" />
+            <param name="wmode" value="opaque" />
+</object>
+</ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://coolshell.cn/" title="coolshell.cn">酷壳网</a></li>
+<li><a href="https://coderq.com" title="coderq.com">码农圈</a></li>
+<li><a href="http://www.williamlong.info/" title="williamlong.info">月光博客</a></li>
+
+</ul>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2015 coderxiao
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+<a title="返回顶部"><img src="/imgs/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+
+
+
+</body>
+</html>
+
+
+
+<a href="https://github.com/xiaoxiaojiok"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>

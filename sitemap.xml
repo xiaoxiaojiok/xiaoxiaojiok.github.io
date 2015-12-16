@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://coderxiao.com/2015/05/13/Dubbo-distributed-service1/</loc>
+    <lastmod>2015-12-16T15:57:51.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/05/21/C++_Singelton/</loc>
+    <lastmod>2015-12-16T15:51:33.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/404.html</loc>
+    <lastmod>2015-11-13T01:14:48.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/04/28/Tour-of-Computer-Systems-1/</loc>
+    <lastmod>2015-04-28T13:26:34.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/04/19/Depth-in-Singleton/</loc>
+    <lastmod>2015-04-24T11:40:07.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/04/12/Thread-questions/</loc>
+    <lastmod>2015-04-24T10:29:10.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/04/09/Thread-synchronize-tools/</loc>
+    <lastmod>2015-04-23T14:36:29.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/04/05/Thread-atomic-cas/</loc>
+    <lastmod>2015-04-23T13:56:46.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/04/08/Thread-threadReturn/</loc>
+    <lastmod>2015-04-23T13:56:00.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/04/08/Thread-threadPool/</loc>
+    <lastmod>2015-04-23T13:55:28.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/03/26/Thread-semaphore/</loc>
+    <lastmod>2015-04-20T14:32:09.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/04/02/Thread-concurrency/</loc>
+    <lastmod>2015-04-20T14:30:17.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/03/24/Thread-condition-lock/</loc>
+    <lastmod>2015-04-20T14:03:56.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/03/17/Thread-volatile/</loc>
+    <lastmod>2015-04-20T12:53:04.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/03/13/Thread-daemon/</loc>
+    <lastmod>2015-04-20T12:28:27.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/03/10/Thread-synchronize-lock/</loc>
+    <lastmod>2015-04-20T11:34:31.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/03/04/Thread-join/</loc>
+    <lastmod>2015-04-19T14:25:38.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/03/02/Thread-yield/</loc>
+    <lastmod>2015-04-19T14:11:35.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/02/25/Thread-sleep/</loc>
+    <lastmod>2015-04-19T14:01:22.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/02/18/Thread-status/</loc>
+    <lastmod>2015-04-19T13:30:36.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/02/12/Thread-introduce/</loc>
+    <lastmod>2015-04-19T13:09:20.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/02/15/Thread-create/</loc>
+    <lastmod>2015-04-19T13:03:52.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/01/02/Hexo/</loc>
+    <lastmod>2015-03-15T06:51:25.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/about/index.html</loc>
+    <lastmod>2015-03-13T13:31:58.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/02/10/SortAndSearchCompare/</loc>
+    <lastmod>2015-03-06T08:59:06.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/01/10/Linux-zombie/</loc>
+    <lastmod>2015-01-17T11:39:48.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/01/04/Linux-shell-command/</loc>
+    <lastmod>2015-01-17T11:26:58.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/01/17/noMainClass/</loc>
+    <lastmod>2015-01-17T11:26:16.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/01/14/Linux-dup-CGI/</loc>
+    <lastmod>2015-01-17T10:09:09.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/2015/01/07/Linux-buffer/</loc>
+    <lastmod>2015-01-17T08:18:44.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://coderxiao.com/recommend/index.html</loc>
+    <lastmod>2015-01-04T07:27:54.000Z</lastmod>
+  </url>
+  
+</urlset>

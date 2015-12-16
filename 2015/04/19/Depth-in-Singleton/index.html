@@ -1,0 +1,500 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>深入了解单例模式 | 磕了药的手风琴</title>
+  <meta name="author" content="coderxiao">
+  
+  <meta name="description" content="xiaojian">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="深入了解单例模式"/>
+  <meta property="og:site_name" content="磕了药的手风琴"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="磕了药的手风琴" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+  
+
+
+  
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c76af951f22ae474d54aa5de7f5928cd";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+  <meta name="baidu-site-verification" content="T5wrOARbB1" />
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">磕了药的手风琴</a></h1>
+  <h2><a href="/">有优秀的人在，在哪里都能取得进步</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-04-19T11:12:41.000Z"><a href="/2015/04/19/Depth-in-Singleton/">4月 19 2015</a></time>
+      
+      
+  
+    <h1 class="title">深入了解单例模式</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2>最简单的实现</h2>
+
+<hr>
+<p>在GoF的23种设计模式中，<code>单例模式</code>是比较简单的一种。</p>
+<p>所谓的单例模式，就是在整个应用中保证只有一个类的实例存在。例如一些线程池和数据库连接池都要求是单实例的。</p>
+<p>一种最简单的实现就是把类的构造函数写成<code>private</code>的，从而保证别的类不能实例化此类，然后在类中提供一个静态的实例并能够返回给使用者。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonClass</span> </span>{</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> SingletonClass instance = <span class="keyword">new</span> SingletonClass();</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> SingletonClass <span class="title">getInstance</span>(){</div><div class="line">		<span class="keyword">return</span> instance;</div><div class="line">	}</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="title">SingletonClass</span>(){</div><div class="line">		</div><div class="line">	}</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p>如上面所示，外部使用者如果需要使用<code>SingletonClass</code>的实例，只能通过<code>getInstance()</code>方法，并且它的构造方法是<code>private</code>的，这样就保证了只能有一个对象存在。</p>
+<h2>延迟加载</h2>
+
+<hr>
+<p>上面的代码虽然简单，但是存在一个问题，无论这个类是否被使用，都会创建一个<code>instance</code>对象。如果这个创建很耗时，比如需要连接10000次数据库，并且这个类还不一定被使用，那么这个创建过程就不是必须的。</p>
+<p>为了解决这个问题，可以使用下面的方案：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonClass</span> </span>{</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> SingletonClass instance = <span class="keyword">null</span>;</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> SingletonClass <span class="title">getInstance</span>(){</div><div class="line">		<span class="keyword">if</span>(instance == <span class="keyword">null</span>){</div><div class="line">			instance = <span class="keyword">new</span> SingletonClass();</div><div class="line">		}</div><div class="line">		<span class="keyword">return</span> instance;</div><div class="line">	}</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="title">SingletonClass</span>(){</div><div class="line">		</div><div class="line">	}</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>如果要使用<code>instance</code>的话，第一次调用<code>getInstance()</code>发现<code>instance</code>是null，然后就创建一个新的对象并返回；第二次再调用的时候，因为这个<code>instance</code>已经不是null，因此不会再创建对象，直接将其返回。</p>
+<p>这个过程就是<strong>延迟加载</strong>。</p>
+<h2>同步</h2>
+
+<hr>
+<p>上面的代码在<code>单线程</code>中是可以正常运行的。但是在<code>多线程中</code>就麻烦了。</p>
+<p>如果线程A在第一次调用<code>getInstance()</code>时判断<code>instance</code>是null的，于是它开始创建实例（创建）。</p>
+<p>就在这时，CPU发生了时间片轮转，线程B开始执行，它调用<code>getInstance()</code>方法，同样检测到<code>instance</code>是null的，这时B开始创建对象，创建完后切换到A继续执行，这时A会继续创建对象。</p>
+<p>这样线程A和线程B各自拥有一个SingletonClass的对象。<strong>单例创建失败</strong>。</p>
+<p>解决的方法也很简单，只需加锁就可以了。但是由于性能应该<strong>使用更细粒度的同步块而非同步方法</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonClass</span> </span>{</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> SingletonClass instance = <span class="keyword">null</span>;</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> SingletonClass <span class="title">getInstance</span>(){</div><div class="line">		<span class="keyword">synchronized</span> (SingletonClass.class) {</div><div class="line">			<span class="keyword">if</span>(instance == <span class="keyword">null</span>){</div><div class="line">				instance = <span class="keyword">new</span> SingletonClass();</div><div class="line">			}</div><div class="line">		}</div><div class="line">		<span class="keyword">return</span> instance;</div><div class="line">	}</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="title">SingletonClass</span>(){</div><div class="line">		</div><div class="line">	}</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h2>又是性能</h2>
+
+<hr>
+<p>上面已经用同步块代替同步方法减少锁的粒度来提高性能。</p>
+<p>但是这样的修改还是不起太大作用，因为每一次调用getInstance()的时候必然要同步，性能问题还是存在。</p>
+<p>但是，如果我们事先判断一下是不是为null再去同步呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonClass</span> </span>{</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> SingletonClass instance = <span class="keyword">null</span>;</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> SingletonClass <span class="title">getInstance</span>(){</div><div class="line">		<span class="keyword">if</span>(instance == <span class="keyword">null</span>){</div><div class="line">			<span class="keyword">synchronized</span> (SingletonClass.class) {</div><div class="line">				<span class="keyword">if</span>(instance == <span class="keyword">null</span>){</div><div class="line">					instance = <span class="keyword">new</span> SingletonClass();</div><div class="line">				}</div><div class="line">			}</div><div class="line">		}</div><div class="line">		<span class="keyword">return</span> instance;</div><div class="line">	}</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="title">SingletonClass</span>(){</div><div class="line">		</div><div class="line">	}</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>这就是<strong>double-checkd locking</strong>设计实现的单例模式。</p>
+<h2>可见性</h2>
+
+<hr>
+<p>下面来想一下，创建一个变量需要哪些步骤呢？</p>
+<p>一个是申请一块内存，调用构造方法进行初始化操作；另一个是分配一个指针指向这块内存。</p>
+<p>这两个操作谁在前谁在后呢？JVM规范并没有规定。</p>
+<p>那么就存在这么一种情况，JVM是先开辟出一块内存，然后把指针指向这块内存，最后调用构造方法进行初始化。</p>
+<p>下面对程序进行分析：线程A开始创建SingletonClass实例，此时线程B调用了getInstance方法，首先判断instance是否为空，按照上面所说的内存模型，A已经把instance指向了那块内存，只是还没有调用构造方法，此时B检测到instance不为空，于是直接返回instance了。</p>
+<p>问题出现了，尽管instance不为null，但是它并没有构造完成，此时如果B在A将instance构造完成之前就调用了这个实例，程序就会出现错误。</p>
+<p>于是，我们想到了volatile变量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonClass</span> </span>{</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> SingletonClass instance = <span class="keyword">null</span>;</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> SingletonClass <span class="title">getInstance</span>(){</div><div class="line">		<span class="keyword">if</span>(instance == <span class="keyword">null</span>){</div><div class="line">			<span class="keyword">synchronized</span> (SingletonClass.class) {</div><div class="line">				<span class="keyword">if</span>(instance == <span class="keyword">null</span>){</div><div class="line">					instance = <span class="keyword">new</span> SingletonClass();</div><div class="line">				}</div><div class="line">			}</div><div class="line">		}</div><div class="line">		<span class="keyword">return</span> instance;</div><div class="line">	}</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="title">SingletonClass</span>(){</div><div class="line">		</div><div class="line">	}</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>然而，这个只是java5之后的解决方法，因为java5之后才支持volatile，其实还有另外一种方法不会受到Java版本的影响：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonClass</span> </span>{</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonClassInstance</span></span>{</div><div class="line">		<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> SingletonClass instance = <span class="keyword">new</span> SingletonClass();</div><div class="line">	}</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> SingletonClass <span class="title">getInstance</span>(){</div><div class="line">		<span class="keyword">return</span> SingletonClassInstance.instance;</div><div class="line">	}</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="title">SingletonClass</span>(){</div><div class="line">		</div><div class="line">	}</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>在这个版本中，我们使用了Java的静态内部类。这种方式也是<code>Effiective Java</code>推荐的。</p>
+<p>至此，我们提出了两种完好的解决方案。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Java/">Java</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Java/">Java</a>, <a href="/tags/Design-Pattern/">Design Pattern</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+<nav id="pagination" >
+    
+    <a href="/2015/04/28/Tour-of-Computer-Systems-1/" class="alignleft prev" title="计算机系统漫游">上一篇：计算机系统漫游</a>
+ 	
+ 	
+    <a href="/2015/04/12/Thread-questions/" class="alignright next" title="Java多线程：线程带来的问题">下一篇：Java多线程：线程带来的问题</a>
+ 	
+    <div class="clearfix"></div>
+
+</nav>
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread" data-thread-key="/2015/04/19/Depth-in-Singleton/" data-title="深入了解单例模式" data-url="http://coderxiao.com/2015/04/19/Depth-in-Singleton/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"xiaoxiaojiok"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//baidu.com/baidu" method="get" accept-charset="utf-8">
+    <input type="search" name="word" results="0" placeholder="搜索">
+    <input type="hidden" name="si" value="coderxiao.com">
+    <input name=tn type=hidden value="bds">
+	<input name=cl type=hidden value="3">
+	<input name=ct type=hidden value="2097152">
+	<input name=s type=hidden value="on">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Algorithm/">Algorithm</a><small>1</small></li>
+  
+    <li><a href="/categories/C/">C++</a><small>1</small></li>
+  
+    <li><a href="/categories/Dubbo/">Dubbo</a><small>1</small></li>
+  
+    <li><a href="/categories/Hexo/">Hexo</a><small>1</small></li>
+  
+    <li><a href="/categories/Java/">Java</a><small>19</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>磕了药的手风琴</li>
+<li><a href="http://www.scut.edu.cn">SCUT</a>在读研究生</li>
+<li>Theme: <a href="https://github.com/xiaoxiaojiok/light">Light</a></li>
+<li>想要交友的朋友请<a href="http://coderxiao.com/about">联系我</a>！</li>
+</ul>
+</div>
+
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Algorithm/" style="font-size: 10.00px;">Algorithm</a><a href="/tags/C/" style="font-size: 10.00px;">C++</a><a href="/tags/CGI/" style="font-size: 10.00px;">CGI</a><a href="/tags/Design-Pattern/" style="font-size: 12.50px;">Design Pattern</a><a href="/tags/Dubbo/" style="font-size: 10.00px;">Dubbo</a><a href="/tags/Git/" style="font-size: 10.00px;">Git</a><a href="/tags/Hexo/" style="font-size: 10.00px;">Hexo</a><a href="/tags/Java/" style="font-size: 20.00px;">Java</a><a href="/tags/Linux/" style="font-size: 15.00px;">Linux</a><a href="/tags/Thread/" style="font-size: 17.50px;">Thread</a><a href="/tags/shell/" style="font-size: 10.00px;">shell</a>
+  </div>
+</div>
+
+
+  <iframe width="100%" height="137" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=137&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2552916352&verifier=fbb51242&dpc=1"></iframe>
+
+  <div class="widget tag">
+<h3 class="title">亲，记得运动</h3>
+<ul class="entry">
+<object type="application/x-shockwave-flash" style="outline:none;" 
+data="http://cdn-blog.mimvp.com/wp-content/themes/officefolders/images/mouse.swf" 
+width="230" height="160" alt="显示小白鼠，请安装flash" title="小白鼠一枚，来领走我">
+            <param name="movie" value="http://cdn-blog.mimvp.com/wp-content/themes/officefolders/images/mouse.swf" />
+            <param name="bgcolor" value="#ffffff" />
+                <param name="color" value="#F5F5F5" />
+            <param name="AllowScriptAccess" value="always" />
+            <param name="wmode" value="opaque" />
+</object>
+</ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://coolshell.cn/" title="coolshell.cn">酷壳网</a></li>
+<li><a href="https://coderq.com" title="coderq.com">码农圈</a></li>
+<li><a href="http://www.williamlong.info/" title="williamlong.info">月光博客</a></li>
+
+</ul>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2015 coderxiao
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+<a title="返回顶部"><img src="/imgs/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+
+
+
+</body>
+</html>
+
+
+
+<a href="https://github.com/xiaoxiaojiok"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>

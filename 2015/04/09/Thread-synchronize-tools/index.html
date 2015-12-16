@@ -1,0 +1,476 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Java多线程：新特性—同步工具 | 磕了药的手风琴</title>
+  <meta name="author" content="coderxiao">
+  
+  <meta name="description" content="xiaojian">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Java多线程：新特性—同步工具"/>
+  <meta property="og:site_name" content="磕了药的手风琴"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="磕了药的手风琴" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+  
+
+
+  
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c76af951f22ae474d54aa5de7f5928cd";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+  <meta name="baidu-site-verification" content="T5wrOARbB1" />
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">磕了药的手风琴</a></h1>
+  <h2><a href="/">有优秀的人在，在哪里都能取得进步</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-04-09T10:45:12.000Z"><a href="/2015/04/09/Thread-synchronize-tools/">4月 9 2015</a></time>
+      
+      
+  
+    <h1 class="title">Java多线程：新特性—同步工具</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2>CountDownLatch</h2>
+
+<hr>
+<p>CountDownLatch，一个同步辅助类，在完成一组正在其他线程中执行的操作之前，它允许一个或多个线程一直等待。</p>
+<p>CountDownLatch的一个非常典型的应用场景是：有一个任务想要往下执行，但必须要等到其他的任务执行完毕后才可以继续往下执行。</p>
+<p>假如我们这个想要继续往下执行的任务调用一个CountDownLatch对象的<code>await()</code>方法，其他的任务执行完自己的任务后调用同一个CountDownLatch对象上的<code>countDown()</code>方法，这个调用<code>await()</code>方法的任务将一直阻塞等待，直到这个CountDownLatch对象的计数值减到0为止。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="title">CountDownLatch</span>(<span class="keyword">int</span> count);</div><div class="line">	构造方法，指定了计数的次数</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">countDown</span>();</div><div class="line">	当前线程调用此方法，则计数减一</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">await</span>();</div><div class="line">	调用此方法会一直阻塞当前线程，直到计时器的值为<span class="number">0</span></div></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h3>例子</h3>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.concurrent.CountDownLatch;</div><div class="line"></div><div class="line"><span class="javadoc">/***</span></div><div class="line"> * CountDownLatch</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>{ </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) <span class="keyword">throws</span> InterruptedException {  </div><div class="line">        CountDownLatch latch=<span class="keyword">new</span> CountDownLatch(<span class="number">2</span>);<span class="comment">//两个工人的协作  </span></div><div class="line">        Worker worker1=<span class="keyword">new</span> Worker(<span class="string">"A"</span>, latch);  </div><div class="line">        Worker worker2=<span class="keyword">new</span> Worker(<span class="string">"B"</span>, latch);  </div><div class="line">        worker1.start();<span class="comment">//  </span></div><div class="line">        worker2.start();<span class="comment">//  </span></div><div class="line">        latch.await();<span class="comment">//等待所有工人完成工作  </span></div><div class="line">        System.out.println(<span class="string">"吃饭去..."</span>);</div><div class="line">    }   </div><div class="line">} </div><div class="line"></div><div class="line"></div><div class="line">class Worker extends Thread{  </div><div class="line">    String workerName;   </div><div class="line">    CountDownLatch latch;  </div><div class="line">    <span class="keyword">public</span> <span class="title">Worker</span>(String workerName ,CountDownLatch latch){  </div><div class="line">         <span class="keyword">this</span>.workerName=workerName;  </div><div class="line">         <span class="keyword">this</span>.latch=latch;  </div><div class="line">    }  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>(){  </div><div class="line">        System.out.println(<span class="string">"Worker "</span>+workerName+<span class="string">" finish work "</span>);  </div><div class="line">        <span class="keyword">try</span> {</div><div class="line">			Thread.sleep(<span class="number">2000</span>);</div><div class="line">		} <span class="keyword">catch</span> (InterruptedException e) {</div><div class="line">			e.printStackTrace();</div><div class="line">		}</div><div class="line">        latch.countDown();<span class="comment">//工人完成工作，计数器减一  </span></div><div class="line">    }  </div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Worker A finish work </div><div class="line">Worker B finish work </div><div class="line">吃饭去...</div></pre></td></tr></table></figure>
+
+<h2>CyclicBarrier</h2>
+
+<hr>
+<p>CyclicBarrier和CountDownLatch差不多,也可以用于只有当所有子任务都执行完成时候，才能执行主任务的情况。</p>
+<h3>例子</h3>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.concurrent.BrokenBarrierException;</div><div class="line"><span class="keyword">import</span> java.util.concurrent.CyclicBarrier;</div><div class="line"></div><div class="line"><span class="javadoc">/** </span></div><div class="line">* CyclicBarrier</div><div class="line">* </div><div class="line">*/ </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>{ </div><div class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) { </div><div class="line">                <span class="comment">//创建障碍器，并设置MainTask为所有定数量的线程都达到障碍点时候所要执行的任务</span></div><div class="line">                CyclicBarrier cb = <span class="keyword">new</span> CyclicBarrier(<span class="number">7</span>, <span class="keyword">new</span> MainTask()); </div><div class="line">                <span class="keyword">new</span> SubTask(<span class="string">"A"</span>, cb).start(); </div><div class="line">                <span class="keyword">new</span> SubTask(<span class="string">"B"</span>, cb).start(); </div><div class="line">                <span class="keyword">new</span> SubTask(<span class="string">"C"</span>, cb).start(); </div><div class="line">                <span class="keyword">new</span> SubTask(<span class="string">"D"</span>, cb).start(); </div><div class="line">                <span class="keyword">new</span> SubTask(<span class="string">"E"</span>, cb).start(); </div><div class="line">                <span class="keyword">new</span> SubTask(<span class="string">"F"</span>, cb).start(); </div><div class="line">                <span class="keyword">new</span> SubTask(<span class="string">"G"</span>, cb).start(); </div><div class="line">        } </div><div class="line">} </div><div class="line"></div><div class="line"><span class="javadoc">/** </span></div><div class="line">* 主任务 </div><div class="line">*/ </div><div class="line">class MainTask implements Runnable { </div><div class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() { </div><div class="line">                System.out.println(<span class="string">"主任务执行了..."</span>); </div><div class="line">        } </div><div class="line">} </div><div class="line"></div><div class="line"><span class="javadoc">/** </span></div><div class="line">* 子任务 </div><div class="line">*/ </div><div class="line">class SubTask extends Thread { </div><div class="line">        <span class="keyword">private</span> String name; </div><div class="line">        <span class="keyword">private</span> CyclicBarrier cb; </div><div class="line"></div><div class="line">        SubTask(String name, CyclicBarrier cb) { </div><div class="line">                <span class="keyword">this</span>.name = name; </div><div class="line">                <span class="keyword">this</span>.cb = cb; </div><div class="line">        } </div><div class="line"></div><div class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() { </div><div class="line">                System.out.println(<span class="string">"[子任务"</span> + name + <span class="string">"]开始执行了"</span>); </div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">999999</span>; i++) ;    <span class="comment">//模拟耗时的任务 </span></div><div class="line">                System.out.println(<span class="string">"[子任务"</span> + name + <span class="string">"]开始执行完成了，并通知障碍器已经完成"</span>); </div><div class="line">                <span class="keyword">try</span> { </div><div class="line">                        <span class="comment">//通知障碍器已经完成 </span></div><div class="line">                        cb.await(); </div><div class="line">                } <span class="keyword">catch</span> (InterruptedException e) { </div><div class="line">                        e.printStackTrace(); </div><div class="line">                } <span class="keyword">catch</span> (BrokenBarrierException e) { </div><div class="line">                        e.printStackTrace(); </div><div class="line">                } </div><div class="line">        } </div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>输出结果:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">[子任务B]开始执行了</div><div class="line">[子任务D]开始执行了</div><div class="line">[子任务A]开始执行了</div><div class="line">[子任务E]开始执行了</div><div class="line">[子任务C]开始执行了</div><div class="line">[子任务A]开始执行完成了，并通知障碍器已经完成</div><div class="line">[子任务D]开始执行完成了，并通知障碍器已经完成</div><div class="line">[子任务C]开始执行完成了，并通知障碍器已经完成</div><div class="line">[子任务F]开始执行了</div><div class="line">[子任务B]开始执行完成了，并通知障碍器已经完成</div><div class="line">[子任务E]开始执行完成了，并通知障碍器已经完成</div><div class="line">[子任务G]开始执行了</div><div class="line">[子任务F]开始执行完成了，并通知障碍器已经完成</div><div class="line">[子任务G]开始执行完成了，并通知障碍器已经完成</div><div class="line">主任务执行了...</div></pre></td></tr></table></figure>
+
+<h2>总结</h2>
+
+<hr>
+<p><code>CountDownLatch</code>是所有子程序执行完以后，再执行主线程。<strong>关注的是主线程。</strong><br><code>CyclicBarrier</code>是所有子线程都执行到某一点后，再继续执行。<strong>关注的是子线程.</strong></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Java/">Java</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Java/">Java</a>, <a href="/tags/Thread/">Thread</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+<nav id="pagination" >
+    
+    <a href="/2015/04/12/Thread-questions/" class="alignleft prev" title="Java多线程：线程带来的问题">上一篇：Java多线程：线程带来的问题</a>
+ 	
+ 	
+    <a href="/2015/04/08/Thread-threadReturn/" class="alignright next" title="Java多线程：新特性—有返回值的线程">下一篇：Java多线程：新特性—有返回值的线程</a>
+ 	
+    <div class="clearfix"></div>
+
+</nav>
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread" data-thread-key="/2015/04/09/Thread-synchronize-tools/" data-title="Java多线程：新特性—同步工具" data-url="http://coderxiao.com/2015/04/09/Thread-synchronize-tools/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"xiaoxiaojiok"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//baidu.com/baidu" method="get" accept-charset="utf-8">
+    <input type="search" name="word" results="0" placeholder="搜索">
+    <input type="hidden" name="si" value="coderxiao.com">
+    <input name=tn type=hidden value="bds">
+	<input name=cl type=hidden value="3">
+	<input name=ct type=hidden value="2097152">
+	<input name=s type=hidden value="on">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Algorithm/">Algorithm</a><small>1</small></li>
+  
+    <li><a href="/categories/C/">C++</a><small>1</small></li>
+  
+    <li><a href="/categories/Dubbo/">Dubbo</a><small>1</small></li>
+  
+    <li><a href="/categories/Hexo/">Hexo</a><small>1</small></li>
+  
+    <li><a href="/categories/Java/">Java</a><small>19</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>磕了药的手风琴</li>
+<li><a href="http://www.scut.edu.cn">SCUT</a>在读研究生</li>
+<li>Theme: <a href="https://github.com/xiaoxiaojiok/light">Light</a></li>
+<li>想要交友的朋友请<a href="http://coderxiao.com/about">联系我</a>！</li>
+</ul>
+</div>
+
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Algorithm/" style="font-size: 10.00px;">Algorithm</a><a href="/tags/C/" style="font-size: 10.00px;">C++</a><a href="/tags/CGI/" style="font-size: 10.00px;">CGI</a><a href="/tags/Design-Pattern/" style="font-size: 12.50px;">Design Pattern</a><a href="/tags/Dubbo/" style="font-size: 10.00px;">Dubbo</a><a href="/tags/Git/" style="font-size: 10.00px;">Git</a><a href="/tags/Hexo/" style="font-size: 10.00px;">Hexo</a><a href="/tags/Java/" style="font-size: 20.00px;">Java</a><a href="/tags/Linux/" style="font-size: 15.00px;">Linux</a><a href="/tags/Thread/" style="font-size: 17.50px;">Thread</a><a href="/tags/shell/" style="font-size: 10.00px;">shell</a>
+  </div>
+</div>
+
+
+  <iframe width="100%" height="137" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=137&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2552916352&verifier=fbb51242&dpc=1"></iframe>
+
+  <div class="widget tag">
+<h3 class="title">亲，记得运动</h3>
+<ul class="entry">
+<object type="application/x-shockwave-flash" style="outline:none;" 
+data="http://cdn-blog.mimvp.com/wp-content/themes/officefolders/images/mouse.swf" 
+width="230" height="160" alt="显示小白鼠，请安装flash" title="小白鼠一枚，来领走我">
+            <param name="movie" value="http://cdn-blog.mimvp.com/wp-content/themes/officefolders/images/mouse.swf" />
+            <param name="bgcolor" value="#ffffff" />
+                <param name="color" value="#F5F5F5" />
+            <param name="AllowScriptAccess" value="always" />
+            <param name="wmode" value="opaque" />
+</object>
+</ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://coolshell.cn/" title="coolshell.cn">酷壳网</a></li>
+<li><a href="https://coderq.com" title="coderq.com">码农圈</a></li>
+<li><a href="http://www.williamlong.info/" title="williamlong.info">月光博客</a></li>
+
+</ul>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2015 coderxiao
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+<a title="返回顶部"><img src="/imgs/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+
+
+
+</body>
+</html>
+
+
+
+<a href="https://github.com/xiaoxiaojiok"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
