@@ -4,7 +4,7 @@
   <subtitle><![CDATA[有优秀的人在，在哪里都能取得进步]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://coderxiao.com/"/>
-  <updated>2016-01-14T15:51:36.857Z</updated>
+  <updated>2016-01-14T15:58:35.049Z</updated>
   <id>http://coderxiao.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://coderxiao.com/2015/06/10/Dubbo-distributed-service2/"/>
     <id>http://coderxiao.com/2015/06/10/Dubbo-distributed-service2/</id>
     <published>2015-06-10T05:31:11.000Z</published>
-    <updated>2016-01-14T15:48:25.000Z</updated>
+    <updated>2016-01-14T15:58:15.000Z</updated>
     <content type="html"><![CDATA[<h2>前言</h2>
 
 <hr>
@@ -43,7 +43,7 @@
 
 <p>以上三种方法都有一定的局限性和复杂性，我就想能否有更加简单便捷的方法可以解决这个问题。</p>
 <p>最后查阅资料时发现Dubbo是先通过hostname（通过<code>ping hostname</code>）来得到本机的IP地址的，换句话说也就是dubbo是读取<code>/etc/hosts</code>文件得到主机的IP的，又因为Docker在重启时候IP地址会重置，即<code>/etc/hosts</code>文件在Docker重启时候会被重置，所以考虑在Docker启动的脚本中动态修改<code>/etc/hosts</code>文件，从而改变Docker主机的IP。</p>
-<h3>实施</h3>
+<h2>实施</h2>
 
 <hr>
 <p>在Docker启动时候将运行一个脚本文件（该脚本将通过另外一个脚本运行服务，将服务注册到Dubbo中心），在脚本文件中运行下面命令：</p>
