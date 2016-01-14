@@ -242,6 +242,71 @@ var _hmt = _hmt || [];
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-06-10T05:31:11.000Z"><a href="/2015/06/10/Dubbo-distributed-service2/">6月 10 2015</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/06/10/Dubbo-distributed-service2/">基于Dubbo的跨主机容器通信遇到的问题</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2>前言</h2>
+
+<hr>
+<p>最近在项目中使用到<code>Docker</code>和<code>Dubbo</code>，想在Docker中运行一个服务并把该服务自身的信息发布到Dubbo注册中心。</p>
+<p>刚开始测试时候将所有容器都放在同一台主机中，测试过程很顺利，但是当进行Docker主机扩展，将容器部署在不同的主机时候，就发现一个奇怪的现象：应用之间调试不通了。</p>
+<p>这里对具体问题解释一下：Dubbo提供了一个方便的服务发现机制，每个服务（这里称为<strong>提供者</strong>）只要向Dubbo注册中心注册过，注册中心就会将服务的地址发送给同样在注册中心注册的服务调用方（这里称为<strong>消费者</strong>），之后即使Dubbo注册中心挂了也不影响服务的调用。</p>
+<p>当服务提供者部署在容器中时，这时候发现其在Dubbo中心注册的是容器的IP地址，而对于另外一台主机上的消费者来说这个IP是不可访问的，当时我在网上找了很多相关的资料，最后得出几种解决方案。</p>
+<h2>解决方案</h2>
+
+<hr>
+<ol>
+<li><p>设置容器的IP与主机IP在同一网段内，使容器IP可直接访问(会占用大量的IP地址，且IP会限制在同一网段，在生产环境中往往不可能)。</p>
+</li>
+<li><p>通过复杂的iptables路由规则，通过多层桥接方式打通网络(此法是可行的，也是今后要考虑的，但是操作起来略麻烦)。</p>
+</li>
+<li><p>对Dubbo进行扩展，扩展dubbo protocol配置，增加配置项publish host、 publish port，对应主机的ip和port，并且在注册服务时将主机的ip和port写到注册中心。（这种方法需要对Dubbo进行扩展，不太建议）</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2015/06/10/Dubbo-distributed-service2/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-05-21T07:47:26.000Z"><a href="/2015/05/21/C++_Singelton/">5月 21 2015</a></time>
       
       
@@ -444,63 +509,6 @@ var _hmt = _hmt || [];
 
 
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-04-12T10:22:19.000Z"><a href="/2015/04/12/Thread-questions/">4月 12 2015</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/04/12/Thread-questions/">Java多线程：线程带来的问题</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2>安全性问题</h2>
-
-<hr>
-<p>毫无疑问，线性安全是很重要的。那么如何判断一个类是线性安全的呢？</p>
-<p><strong>当多个线程访问某个类时，不管运行环境采用何种调度方式或者这些线程将如何交替执行，并且在主调用代码中不需要任何额外的同步或协同，这个类都能表现出正确的行为</strong>，那么就称这个类是线性安全的。</p>
-<p>解决线程安全性问题可以用前面提到的加锁机制，包括类内置的锁和显式锁。</p>
-<h2>活跃性问题</h2>
-
-<hr>
-<p><h3>死锁</h3><br>一个具体死锁的例子：</p>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2015/04/12/Thread-questions/#more" class="more-link">阅读全文</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
 
 <nav id="pagination">
   
@@ -530,7 +538,7 @@ var _hmt = _hmt || [];
   
     <li><a href="/categories/C/">C++</a><small>1</small></li>
   
-    <li><a href="/categories/Dubbo/">Dubbo</a><small>1</small></li>
+    <li><a href="/categories/Dubbo/">Dubbo</a><small>2</small></li>
   
     <li><a href="/categories/Hexo/">Hexo</a><small>1</small></li>
   
@@ -558,7 +566,7 @@ var _hmt = _hmt || [];
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/Algorithm/" style="font-size: 10.00px;">Algorithm</a><a href="/tags/C/" style="font-size: 10.00px;">C++</a><a href="/tags/CGI/" style="font-size: 10.00px;">CGI</a><a href="/tags/Design-Pattern/" style="font-size: 12.50px;">Design Pattern</a><a href="/tags/Dubbo/" style="font-size: 10.00px;">Dubbo</a><a href="/tags/Git/" style="font-size: 10.00px;">Git</a><a href="/tags/Hexo/" style="font-size: 10.00px;">Hexo</a><a href="/tags/Java/" style="font-size: 20.00px;">Java</a><a href="/tags/Linux/" style="font-size: 15.00px;">Linux</a><a href="/tags/Thread/" style="font-size: 17.50px;">Thread</a><a href="/tags/shell/" style="font-size: 10.00px;">shell</a>
+    <a href="/tags/Algorithm/" style="font-size: 10.00px;">Algorithm</a><a href="/tags/C/" style="font-size: 10.00px;">C++</a><a href="/tags/CGI/" style="font-size: 10.00px;">CGI</a><a href="/tags/Design-Pattern/" style="font-size: 12.50px;">Design Pattern</a><a href="/tags/Dubbo/" style="font-size: 12.50px;">Dubbo</a><a href="/tags/Git/" style="font-size: 10.00px;">Git</a><a href="/tags/Hexo/" style="font-size: 10.00px;">Hexo</a><a href="/tags/Java/" style="font-size: 20.00px;">Java</a><a href="/tags/Linux/" style="font-size: 15.00px;">Linux</a><a href="/tags/Thread/" style="font-size: 17.50px;">Thread</a><a href="/tags/shell/" style="font-size: 10.00px;">shell</a>
   </div>
 </div>
 
@@ -595,7 +603,7 @@ width="230" height="160" alt="显示小白鼠，请安装flash" title="小白鼠
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2015 coderxiao
+  &copy; 2016 coderxiao
   
 </div>
 <div class="clearfix"></div></footer>

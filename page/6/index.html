@@ -242,6 +242,62 @@ var _hmt = _hmt || [];
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-01-10T04:36:30.000Z"><a href="/2015/01/10/Linux-zombie/">1月 10 2015</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/01/10/Linux-zombie/">Linux避免僵尸进程两种方式</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2>什么是僵尸进程</h2>
+
+<hr>
+<p>子进程退出时，父进程并未对其发出的<code>SIGCHLD</code>信号进行适当处理，导致子进程停留在僵死状态等待其父进程为其收尸，这个状态下的子进程就是僵死进程。</p>
+<p>僵尸进程将会占据系统资源，由于系统的进程ID是有限的，所以大量的僵尸进程会导致用户创建进程失败。</p>
+<h2>避免僵尸进程两种方式</h2>
+
+<hr>
+<p>一、 父进程可以马上退出，使得子进程成为孤儿进程，由系统将子进程的ppid改为1（<code>init进程</code>），并由<code>init进程</code>来回收子进程的资源。</p>
+<p>实现这一要求的技巧是<code>fork</code>两次。<br>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2015/01/10/Linux-zombie/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-01-07T09:00:03.000Z"><a href="/2015/01/07/Linux-buffer/">1月 7 2015</a></time>
       
       
@@ -428,7 +484,7 @@ var _hmt = _hmt || [];
   
     <li><a href="/categories/C/">C++</a><small>1</small></li>
   
-    <li><a href="/categories/Dubbo/">Dubbo</a><small>1</small></li>
+    <li><a href="/categories/Dubbo/">Dubbo</a><small>2</small></li>
   
     <li><a href="/categories/Hexo/">Hexo</a><small>1</small></li>
   
@@ -456,7 +512,7 @@ var _hmt = _hmt || [];
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/Algorithm/" style="font-size: 10.00px;">Algorithm</a><a href="/tags/C/" style="font-size: 10.00px;">C++</a><a href="/tags/CGI/" style="font-size: 10.00px;">CGI</a><a href="/tags/Design-Pattern/" style="font-size: 12.50px;">Design Pattern</a><a href="/tags/Dubbo/" style="font-size: 10.00px;">Dubbo</a><a href="/tags/Git/" style="font-size: 10.00px;">Git</a><a href="/tags/Hexo/" style="font-size: 10.00px;">Hexo</a><a href="/tags/Java/" style="font-size: 20.00px;">Java</a><a href="/tags/Linux/" style="font-size: 15.00px;">Linux</a><a href="/tags/Thread/" style="font-size: 17.50px;">Thread</a><a href="/tags/shell/" style="font-size: 10.00px;">shell</a>
+    <a href="/tags/Algorithm/" style="font-size: 10.00px;">Algorithm</a><a href="/tags/C/" style="font-size: 10.00px;">C++</a><a href="/tags/CGI/" style="font-size: 10.00px;">CGI</a><a href="/tags/Design-Pattern/" style="font-size: 12.50px;">Design Pattern</a><a href="/tags/Dubbo/" style="font-size: 12.50px;">Dubbo</a><a href="/tags/Git/" style="font-size: 10.00px;">Git</a><a href="/tags/Hexo/" style="font-size: 10.00px;">Hexo</a><a href="/tags/Java/" style="font-size: 20.00px;">Java</a><a href="/tags/Linux/" style="font-size: 15.00px;">Linux</a><a href="/tags/Thread/" style="font-size: 17.50px;">Thread</a><a href="/tags/shell/" style="font-size: 10.00px;">shell</a>
   </div>
 </div>
 
@@ -493,7 +549,7 @@ width="230" height="160" alt="显示小白鼠，请安装flash" title="小白鼠
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2015 coderxiao
+  &copy; 2016 coderxiao
   
 </div>
 <div class="clearfix"></div></footer>

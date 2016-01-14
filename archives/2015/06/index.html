@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Java多线程：简介 | 磕了药的手风琴</title>
+  <title>归档：2015/6 | 磕了药的手风琴</title>
   <meta name="author" content="coderxiao">
   
   <meta name="description" content="xiaojian">
@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Java多线程：简介"/>
+  
   <meta property="og:site_name" content="磕了药的手风琴"/>
 
   
@@ -222,128 +222,25 @@ var _hmt = _hmt || [];
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<h2 class="archive-title">2015/6</h2>
+
+
+  <div class="archive">
     
-      <img src="">
+      <article class="post">
+        <div class="post-content">
+          <header>
+            <div class="icon"></div>
+            <time datetime="2015-06-10T05:31:11.000Z"><a href="/2015/06/10/Dubbo-distributed-service2/">6月 10 2015</a></time>
+            
+              <h1 class="title"><a href="/2015/06/10/Dubbo-distributed-service2/">基于Dubbo的跨主机容器通信遇到的问题</a></h1>
+            
+          </header>
+        </div>
+      </article>
     
   </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-02-12T10:07:08.000Z"><a href="/2015/02/12/Thread-introduce/">2月 12 2015</a></time>
-      
-      
-  
-    <h1 class="title">Java多线程：简介</h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2>为什么要用多线程</h2>
-
-<hr>
-<p>想象一下，你有一叠半米高的传单需要派送，如果你一个人派送的话可能会花费你大半天或者一整天的时间，那么为了节省时间你会怎么做呢？</p>
-<p>你马上想到可以叫上你的好基友和你一起派送，如果你的好基友只有一个，你会节省一半的时间，如果你的好基友有一打，那么你可能在大半个小时就可以完成任务。</p>
-<p>这就是现实版的<code>多线程</code>。</p>
-<p>多线程允许在同一个进程中同时存在多个程序控制流。线程会共享进程范围内的资源，例如内存句柄和文件句柄，但是每一个线程都有各自的程序计数器、栈和局部变量等。多线程还提供一种直观的分解模式来充分利用多处理器系统中的硬件并行性，而在同一个程序中的多个线程也可以被同时调度到多个CPU上运行。</p>
-<p>多线程具有的优势主要如下：</p>
-<ol>
-<li><p><code>资源利用率更好</code></p>
-</li>
-<li><p><code>程序设计更加简单</code></p>
-</li>
-<li><p><code>程序响应更快</code></p>
-</li>
-</ol>
-<a id="more"></a>
-
-<h2>Java中的多线程</h2>
-
-<hr>
-<p>Java是最先支持多线程的开发语言之一，每个Java应用程序都会使用线程。当JVM启动的时候，它将会为JVM的内部任务（例如垃圾回收、终结操作等）创建后台线程，并创建一个主线程来运行main方法。<code>AWT</code>和<code>Swing</code>的用户界面框架将创建线程来管理用户界面事件。<code>Timer</code>将创建线程来执行延迟任务。一些组件框架，例如<code>Servlet</code>和<code>RMI</code>，都会创建线程池并调用这些线程中的方法。</p>
-<p>几乎所有的Java应用程序都是多线程的，如果要使用上面提到的功能，那么必须对Java的多线程有一定的熟悉程度，这也是我总结Java多线程这一系列的原因，也算是抛砖引玉，希望能对其他的Java开发者有所帮助。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-  
-  <div class="categories">
-    <a href="/categories/Java/">Java</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/Java/">Java</a>, <a href="/tags/Thread/">Thread</a>
-  </div>
-
-<!-- Baidu Button BEGIN -->
-<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
-<a class="bds_qzone"></a>
-<a class="bds_tsina"></a>
-<a class="bds_tqq"></a>
-<a class="bds_renren"></a>
-<a class="bds_t163"></a>
-<span class="bds_more"></span>
-<a class="shareCount"></a>
-</div>
-<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
-<script type="text/javascript" id="bdshell_js"></script>
-<script type="text/javascript">
-document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
-</script>
-<!-- Baidu Button END -->      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-<nav id="pagination" >
-    
-    <a href="/2015/02/15/Thread-create/" class="alignleft prev" title="Java多线程：创建和启动">上一篇：Java多线程：创建和启动</a>
- 	
- 	
-    <a href="/2015/02/10/SortAndSearchCompare/" class="alignright next" title="我应该使用哪种排序和查找算法">下一篇：我应该使用哪种排序和查找算法</a>
- 	
-    <div class="clearfix"></div>
-
-</nav>
-
-
-<section id="comment">
-
-<!-- Duoshuo Comment BEGIN -->
-	<div class="ds-thread" data-thread-key="/2015/02/12/Thread-introduce/" data-title="Java多线程：简介" data-url="http://coderxiao.com/2015/02/12/Thread-introduce/"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"xiaoxiaojiok"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- Duoshuo Comment END -->  
-
-  
-</section>
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">

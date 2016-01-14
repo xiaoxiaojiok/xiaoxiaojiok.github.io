@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://coderxiao.com/2015/06/10/Dubbo-distributed-service2/</loc>
+    <lastmod>2016-01-14T15:48:25.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://coderxiao.com/2015/05/13/Dubbo-distributed-service1/</loc>
     <lastmod>2015-12-16T15:57:51.000Z</lastmod>
   </url>
